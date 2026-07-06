@@ -1,0 +1,69 @@
+@import "tailwindcss";
+
+@layer components {
+	.flex-center {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.vazir-font {
+		font-family: Vazirmatn, sans-serif;
+	}
+
+	.page-wrapper {
+		min-height: 100vh;
+		display: grid;
+		gap: 20px;
+		grid-template-rows: auto auto auto 1fr;
+	}
+
+	.app_container {
+		width: 100%;
+		max-width: 1280px;
+		margin: 0 auto;
+		padding-inline: 17px;
+	}
+
+	/* Box shadow */
+
+	.neu-primary {
+		background-color: #e6e7ee;
+		padding: 0.25rem;
+		box-shadow:
+			12px 12px 24px #c8c9d1,
+			-12px -12px 24px #ffffff;
+	}
+
+	.neu-secondary {
+		background-color: #e6e7ee;
+		padding: 0.75rem 0;
+		transition: all;
+		box-shadow:
+			8px 8px 16px #c8c9d1,
+			-8px -8px 16px #ffffff;
+	}
+
+	.neu-button:active {
+		box-shadow:
+			inset 8px 8px 16px #c8c9d1,
+			inset -8px -8px 16px #ffffff;
+	}
+
+	@media (min-width: 768px) {
+		.app_container {
+			padding-inline: 24px;
+		}
+	}
+
+	@media (min-width: 1024px) {
+		.app_container {
+			padding-inline: 32px;
+		}
+	}
+
+	@media (min-width: 1280px) {
+		.app_container {
+			padding-inline: 40px;
+		}
+	}
+}

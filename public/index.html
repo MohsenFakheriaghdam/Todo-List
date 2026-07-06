@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>ToDo-List</title>
+		<link rel="stylesheet" href="./output.css" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+			integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		/>
+		<link
+			href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css"
+			rel="stylesheet"
+			type="text/css"
+		/>
+	</head>
+	<body class="vazir-font">
+		<div class="page-wrapper bg-[#e6e7ee]">
+			<!-- Header -->
+			<header class="app_container relative mt-2 flex h-10 items-center">
+				<button
+					class="neu-primary header__menu-btn flex-center h-9 w-9 cursor-pointer rounded-full border-solid md:hidden"
+				>
+					<i class="fa-solid fa-bars"></i>
+				</button>
+
+				<button class="neu-primary flex-center h-9 w-9 cursor-pointer rounded-full border-solid max-md:hidden">
+					<i class="fa-solid fa-check"></i>
+				</button>
+
+				<h1
+					class="rounded-2xlw-full neu-primary flex-center absolute left-1/2 h-9 w-1/2 -translate-x-1/2 rounded-2xl font-medium"
+				>
+					All Your Tasks
+				</h1>
+
+				<div
+					class="border-solidborder border-white/40n neu-primary flex-center ml-auto h-9 w-9 cursor-pointer rounded-full"
+				>
+					<i class="fa-regular fa-user"></i>
+				</div>
+			</header>
+			<!-- OVERLAY -->
+			<div
+				id="overlay"
+				class="pointer-events-none fixed inset-0 z-[1000] bg-black/40 opacity-0 transition-opacity duration-300"
+			></div>
+			<!-- MOBILE MENU -->
+			<div
+				id="mobileMenu"
+				class="fixed top-0 left-0 z-[1001] grid h-screen w-[300px] -translate-x-full transform grid-rows-[auto_1fr] gap-6 bg-white p-[28px_19px] shadow-[2px_0_10px_rgba(0,0,0,0.1)] transition-transform duration-300 ease-in-out"
+			>
+				<aside class="space-y-4">
+					<!-- Tasks -->
+					<button class="neu-primary flex-center w-full gap-4 rounded-2xl bg-gray-100 px-5 py-4">
+						<span class="text-xl font-medium">Tasks</span>
+					</button>
+
+					<!-- Categories -->
+					<div class="neu-primary rounded-2xl bg-gray-100 p-5">
+						<button id="categoryBtn" class="flex w-full cursor-pointer items-center justify-between">
+							<div class="flex items-center gap-4">
+								<i class="fa-regular fa-folder text-xl text-gray-600"></i>
+
+								<span class="text-xl font-medium text-gray-700">Categories</span>
+							</div>
+
+							<i
+								id="arrow"
+								class="fa-solid fa-chevron-up text-gray-600 transition-transform duration-300"
+							></i>
+						</button>
+
+						<!-- Content -->
+						<div id="content" class="mt-5 max-h-80 overflow-hidden transition-all duration-300">
+							<div class="space-y-4 pl-10">
+								<label class="flex cursor-pointer items-center gap-3">
+									<input type="radio" name="category" value="none" class="size-4 accent-gray-500" />
+
+									<span class="text-gray-600">None</span>
+								</label>
+
+								<label class="group flex cursor-pointer items-center gap-3">
+									<input type="radio" name="category" value="home" class="peer hidden" />
+
+									<div
+										class="size-4 rounded border border-gray-300 bg-blue-500 peer-checked:ring-1 peer-checked:ring-gray-800 peer-checked:ring-offset-1"
+									></div>
+
+									<span class="text-gray-600">Home</span>
+								</label>
+
+								<label class="group flex cursor-pointer items-center gap-3">
+									<input type="radio" name="category" value="home" class="peer hidden" />
+
+									<div
+										class="size-4 rounded border border-gray-300 bg-cyan-500 peer-checked:ring-1 peer-checked:ring-gray-800 peer-checked:ring-offset-1"
+									></div>
+
+									<span class="text-gray-600">School</span>
+								</label>
+								<label class="group flex cursor-pointer items-center gap-3">
+									<input type="radio" name="category" value="home" class="peer hidden" />
+
+									<div
+										class="size-4 rounded border border-gray-300 bg-teal-500 peer-checked:ring-1 peer-checked:ring-gray-800 peer-checked:ring-offset-1"
+									></div>
+
+									<span class="text-gray-600">Shopping list</span>
+								</label>
+
+								<button
+									class="text-md flex items-center gap-3 text-gray-400 transition hover:text-violet-600"
+								>
+									<i class="fa-regular fa-square-plus"></i>
+
+									<span>Add new</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				</aside>
+			</div>
+			<!-- Filter-Todos -->
+			<div class="app_container flex justify-between">
+				<div>
+					<span class="font-bold">Tasks</span>
+				</div>
+				<div class="flex-center gap-2">
+					<div
+						id="allFilter"
+						class="py-.5 flex-center cursor-pointer rounded-md border-2 border-gray-400 px-2 text-gray-500 md:px-4"
+					>
+						<span>All</span>
+					</div>
+					<div
+						id="doneFilter"
+						class="py-.5 flex-center cursor-pointer rounded-md border-2 border-gray-400 px-2 text-gray-500 md:px-4"
+					>
+						<span>Done</span>
+					</div>
+
+					<div
+						id="notDoneFilter"
+						class="py-.5 flex-center cursor-pointer rounded-md border-2 border-gray-400 px-2 text-gray-500 md:px-4"
+					>
+						<span>Not done</span>
+					</div>
+					<div class="text-gray-500">
+						<i class="fa-solid fa-filter"></i>
+					</div>
+				</div>
+			</div>
+			<!-- Add Todo -->
+			<div class="app_container flex-center">
+				<!-- Form -->
+				<form class="neu-primary flex-center todo-form h-10 w-4/5 gap-1 rounded-md lg:w-1/2">
+					<!-- From-Input -->
+					<input
+						type="text"
+						name="todoInput"
+						id="todoInput"
+						class="w-full border-none px-3 py-0.5 outline-none"
+					/>
+					<!-- Form-Submit -->
+					<button class="flex-center h-full px-4 py-1">
+						<i class="fa-solid fa-plus"></i>
+					</button>
+				</form>
+				<!-- Todo -->
+				<div></div>
+			</div>
+			<!-- Todos -->
+			<div class="app_container todo-list flex flex-col items-center justify-start gap-5">
+				<!-- One-Todo -->
+			</div>
+		</div>
+		<script src="../src/js/app.js"></script>
+	</body>
+</html>

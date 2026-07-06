@@ -1,0 +1,21 @@
+{
+	"name": "todo_list",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"scripts": {
+		"dev": "npx @tailwindcss/cli -i ./src/css/input.css -o ./public/output.css --watch"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"type": "commonjs",
+	"devDependencies": {
+		"@tailwindcss/cli": "^4.3.2",
+		"autoprefixer": "^10.5.2",
+		"postcss": "^8.5.16",
+		"prettier": "^3.9.4",
+		"prettier-plugin-tailwindcss": "^0.8.0",
+		"tailwindcss": "^4.3.2"
+	}
+}
